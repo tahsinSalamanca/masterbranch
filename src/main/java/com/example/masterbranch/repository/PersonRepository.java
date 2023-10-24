@@ -35,9 +35,9 @@ public class PersonRepository {
         return mapper.scan(Person.class, scanExpression);
     }
 
-    public String deletePerson(Person person) {
-        mapper.delete(person);
-        return "Person Deleted!";
+    public String deletePerson(String personId) {
+        mapper.delete(mapper.load(Person.class, personId));
+        return "Person Deleted Successfully!";
     }
 
     public String editPerson(Person person) {

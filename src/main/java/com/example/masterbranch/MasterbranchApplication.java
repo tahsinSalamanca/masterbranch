@@ -1,10 +1,12 @@
 package com.example.masterbranch;
 
+import com.example.masterbranch.config.DynamoDBConfig;
 import com.example.masterbranch.entity.Person;
 import com.example.masterbranch.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,7 @@ import java.util.List;
 
 @SpringBootApplication
 @RestController
+@Import({DynamoDBConfig.class})
 @RequestMapping("/api/v1")
 public class MasterbranchApplication {
 
@@ -33,9 +36,9 @@ public class MasterbranchApplication {
 		return personRepository.findAllPerson();
 	}
 
-	@DeleteMapping("/deletePerson")
-	public String deletePerson(@RequestBody Person  person){
-		return personRepository.deletePerson(person);
+	@DeleteMapping("/deletePerson/{personId}")
+	public String deletePerson(@PathVariable String  personId){
+		return personRepository.deletePerson(personId);
 	}
 
 	@PutMapping("/updatePerson")
