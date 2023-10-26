@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 @Import({DynamoDBConfig.class})
 @Api(tags = "Person Api")
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class MasterbranchApplication {
 
 	@Autowired
