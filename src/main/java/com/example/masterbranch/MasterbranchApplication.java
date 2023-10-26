@@ -9,13 +9,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
 
+@EnableSwagger2
 @SpringBootApplication
 @RestController
 @Import({DynamoDBConfig.class})
-@RequestMapping("/api/v1")
+@RequestMapping("/api")
 public class MasterbranchApplication {
 
 	@Autowired
